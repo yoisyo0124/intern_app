@@ -1,0 +1,34 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :post %>
+    <%= form.text_field :post , id: :post_post%>
+  </div>
+
+
+  <div class="field">
+
+   <label>
+     <%= check_box "website", "Amazon" %>Amazon
+     <%= check_box "website", "Hulu" %>Hulu
+     <%= check_box "website", "Netflix" %>Netflix
+   </label>
+
+ </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
