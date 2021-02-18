@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @post.post %>
+</p>
+
+<p>
+  <strong>Amazon:</strong>
+  <%= @post.amazon %>
+</p>
+
+<p>
+  <strong>Hulu:</strong>
+  <%= @post.hulu %>
+</p>
+
+<p>
+  <strong>Youtube:</strong>
+  <%= @post.youtube %>
+</p>
+<p>
+リンク
+<% if @post.amazon %>
+<%= link_to("amazon", 'https://www.amazon.co.jp/s?k='+@post.post+'&i=instant-video') %>
+<% end %>
+<% if @post.hulu %>
+<%= link_to("Hulu", 'https://www.hulu.jp/search?q='+@post.post) %>
+<% end %>
+<% if @post.youtube %>
+<%= link_to("youtube", 'https://www.youtube.com/results?search_query='+@post.post) %>
+<% end %>
+</p>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
