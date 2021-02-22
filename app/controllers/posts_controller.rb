@@ -8,7 +8,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-
+    @post = Post.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
   end
 
   # GET /posts/new

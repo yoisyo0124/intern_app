@@ -1,3 +1,27 @@
-<% @likes.each do |like| %>
- <p><%= post = Post.find_by(id: like.post_id) %></p>
-<% end %>
+<h1>Likes</h1>
+ <table>
+   <thead>
+     <tr>
+       <th>Post</th>
+       <th>リンク</th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <% @likes.each do |like| %>
+      <% post = Post.find_by(id: like.post_id) %>
+       <tr>
+         <td><%= post.post %></td>
+         <td><% if post.amazon %></td>
+         <td><%= link_to("amazon", 'https://www.amazon.co.jp/s?k='+post.post+'&i=instant-video') %></td>
+         <% end %>
+         <td><% if post.hulu %></td>
+         <td><%= link_to("Hulu", 'https://www.hulu.jp/search?q='+post.post) %></td>
+         <% end %>
+         <td><% if post.youtube %></td>
+         <td><%= link_to("youtube", 'https://www.youtube.com/results?search_query='+post.post) %></td>
+         <% end %>
+       </tr>
+     <% end %>
+   </tbody>
+   <%= link_to 'Back', posts_path %>

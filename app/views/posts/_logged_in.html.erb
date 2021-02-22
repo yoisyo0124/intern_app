@@ -4,7 +4,7 @@
 <% @post = Post.find_by(id: params[:id])
 @user = User.find_by(id: 1) %>
 <p><%= link_to(@user.name,"users/#{@user.id}") %></p>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Post</th>
@@ -24,15 +24,15 @@
         <td><%= post.hulu %></td>
         <td><%= post.youtube %></td>
         <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', post, class:"btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) , class:"btn btn-outline-info"%></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-info"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'New Post', new_post_path %>
-
+<%= link_to 'New Post', new_post_path , class:"btn btn-primary"%>
+<%= link_to 'Likes', "/users/#{@user.id}/likes" %>
 <%= link_to "ログアウト", logout_path, method: :delete %>
